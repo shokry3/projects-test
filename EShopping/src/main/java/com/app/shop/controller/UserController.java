@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.util.NumberUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -115,6 +117,20 @@ public class UserController {
 		return ResponseEntity.ok().body(cart);
 	}
 	
+	
+	//get logged user by username .........
+		private User getLoggedinUser(){
+			Object principal = SecurityContextHolder.getContext()
+					.getAuthentication().getPrincipal();
+			
+			if (principal instanceof UserDetails) {
+				if(((UserDetails) principal).getUsername() != null) {
+					return userService.getByUsername(((UserDetails) principal).getUsername()).get();
+				}
+			}
+			
+			return null;
+		}
 	
 	
 }

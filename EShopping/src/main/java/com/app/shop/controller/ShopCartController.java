@@ -78,6 +78,9 @@ public class ShopCartController {
 	@PostMapping(path = "/items", consumes = { "application/json" })
 	public ResponseEntity<CartItems> addItem(@Valid @RequestBody CartItems item) {
 		CartItems addedItem = cartItemService.addItem(item);
+		if(getLoggedinUser() != null) {
+			addedItem.getShopCart().setCartUser(getLoggedinUser());
+		}
 		return ResponseEntity.ok().body(addedItem);
 	}
 
