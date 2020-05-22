@@ -1,0 +1,3 @@
+[submodule "spring-apps"]
+	path = spring-apps
+	url = https://github.com/shokry3/projects.git

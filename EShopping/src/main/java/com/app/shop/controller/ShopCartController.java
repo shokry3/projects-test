@@ -9,6 +9,8 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,9 +25,11 @@ import com.app.shop.model.pojo.CartItems;
 import com.app.shop.model.pojo.CartItemsId;
 import com.app.shop.model.pojo.Item;
 import com.app.shop.model.pojo.ShoppingCart;
+import com.app.shop.model.pojo.User;
 import com.app.shop.model.services.srinterface.ICartItemsService;
 import com.app.shop.model.services.srinterface.IItemService;
 import com.app.shop.model.services.srinterface.IShopCartService;
+import com.app.shop.model.services.srinterface.IUserService;
 
 @RestController
 @RequestMapping("/store/api/c/")
@@ -38,11 +42,17 @@ public class ShopCartController {
 	@Autowired
 	ICartItemsService cartItemService;
 	
+	@Autowired
+	IUserService userService;
+	
 	// 1- End points methods for shopping cart  services
 	@PutMapping("/carts/{id}")
 	public ResponseEntity<ShoppingCart> updateCart( @PathVariable("id") long cartId, ShoppingCart cartDetails) throws ResourceNotFoundException {
 		ShoppingCart cart = cartService.getCartById(cartId)
 				.orElseThrow(() -> new ResourceNotFoundException("Cart not found for this id :: " + cartId));
+		if(getLoggedinUser() != null) {
+			cart.setCartUser(getLoggedinUser());
+		}
 		final ShoppingCart updatedItem = cartService.updateCart(cart, cartDetails);
 		return ResponseEntity.ok(updatedItem);
 	}
@@ -89,6 +99,20 @@ public class ShopCartController {
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("deleted", Boolean.TRUE);
 		return response;
+	}
+	
+	//get logged user by username to update cart with logged user
+	private User getLoggedinUser(){
+		Object principal = SecurityContextHolder.getContext()
+				.getAuthentication().getPrincipal();
+		
+		if (principal instanceof UserDetails) {
+			if(((UserDetails) principal).getUsername() != null) {
+				return userService.getByUsername(((UserDetails) principal).getUsername()).get();
+			}
+		}
+		
+		return null;
 	}
 
 }
