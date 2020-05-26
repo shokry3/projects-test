@@ -18,21 +18,29 @@ import com.app.shop.security.jwt.JwtProvider;
 
 @Service
 public class AuthService implements IAuthService {
-	
+
 	@Autowired
 	UserRepository userRepo;
-	
+
+	@Autowired
 	private PasswordEncoder passwordEncoder;
-    @Autowired
-    private AuthenticationManager authenticationManager;
-    @Autowired
-    private JwtProvider jwtProvider;
+
+	@Autowired
+	private AuthenticationManager authenticationManager;
+
+	@Autowired
+	private UserSevice userservice;
+
+	@Autowired
+	private JwtProvider jwtProvider;
 
 	@Override
 	public User signup(User user) {
 		try {
+			String cryptPassword = passwordEncoder.encode(user.getPassword());
+			user.setPassword(cryptPassword);
 			return userRepo.save(user);
-		}catch(Exception ex) {
+		} catch (Exception ex) {
 			ex.printStackTrace();
 			return null;
 		}
@@ -40,17 +48,30 @@ public class AuthService implements IAuthService {
 
 	@Override
 	public AuthenticationResponse login(LoginRequest loginRequest) {
-        Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),
-                loginRequest.getPassword()));
-        SecurityContextHolder.getContext().setAuthentication(authenticate);
-        String authenticationToken = jwtProvider.generateToken(authenticate);
-        return new AuthenticationResponse(authenticationToken, loginRequest.getUsername());
-    }
-	
+		try {
+			Authentication authenticate = authenticationManager.authenticate(
+					new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
+			SecurityContextHolder.getContext().setAuthentication(authenticate);
+			System.out.println("is authenticate = " + authenticate.isAuthenticated());
+			String authenticationToken = jwtProvider.generateToken(authenticate);
+			User loggedUser = userservice.getByUsername(loginRequest.getUsername()).get();
+			AuthenticationResponse authResponse = new AuthenticationResponse(authenticationToken, loggedUser.getId(),
+					loggedUser.getUsername(), loggedUser.getEmail(), loggedUser.getRoles());
+			;
+			System.out.println(
+					"authResponse data  = " + authResponse.getUsername() + " -- // " + authResponse.getAccessToken());
+			return authResponse;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+
+	}
+
 	public Optional<org.springframework.security.core.userdetails.User> getCurrentUser() {
-        org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder.
-                getContext().getAuthentication().getPrincipal();
-        return Optional.of(principal);
-    }
+		org.springframework.security.core.userdetails.User principal = (org.springframework.security.core.userdetails.User) SecurityContextHolder
+				.getContext().getAuthentication().getPrincipal();
+		return Optional.of(principal);
+	}
 
 }

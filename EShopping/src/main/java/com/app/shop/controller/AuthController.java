@@ -12,13 +12,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.app.shop.model.pojo.LoginRequest;
 import com.app.shop.model.pojo.User;
 import com.app.shop.model.services.AuthService;
 import com.app.shop.model.services.AuthenticationResponse;
 
-@Controller
+@RestController
+@RequestMapping("/store/api/auth/")
 public class AuthController {
 
 	@Autowired
@@ -34,20 +36,6 @@ public class AuthController {
 	public AuthenticationResponse login(@RequestBody LoginRequest loginRequest) {
 		return authService.login(loginRequest);
 	}
-	
-	//for test back-end login
-//	@RequestMapping("/login")
-//	public String loginPage() {
-//		return "login.jsp";
-//
-//	}
-
-	//for test back-end login
-//	@RequestMapping("/logout-success")
-//	public String logoutPage() {
-//		return "logout.jsp";
-//
-//	}
 
 	@RequestMapping("/user")
 	@ResponseBody

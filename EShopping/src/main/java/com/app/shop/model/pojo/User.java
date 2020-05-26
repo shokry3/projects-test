@@ -62,7 +62,7 @@ public class User {
 	private boolean enabled = true;
 	
 	@Column(nullable = true)
-	private boolean blocked = true;
+	private boolean blocked = false;
 
 	
 	@ManyToMany(fetch = FetchType.LAZY)
