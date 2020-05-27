@@ -57,7 +57,6 @@ public class AuthService implements IAuthService {
 			User loggedUser = userservice.getByUsername(loginRequest.getUsername()).get();
 			AuthenticationResponse authResponse = new AuthenticationResponse(authenticationToken, loggedUser.getId(),
 					loggedUser.getUsername(), loggedUser.getEmail(), loggedUser.getRoles());
-			;
 			System.out.println(
 					"authResponse data  = " + authResponse.getUsername() + " -- // " + authResponse.getAccessToken());
 			return authResponse;
@@ -66,6 +65,16 @@ public class AuthService implements IAuthService {
 			return null;
 		}
 
+	}
+	
+	@Override
+	public Optional<User> getByUsername(String username) {
+		return userRepo.findByUsername(username);
+	}
+	
+	@Override
+	public Optional<User> getByEmail(String email) {
+		return userRepo.findByEmail(email);
 	}
 
 	public Optional<org.springframework.security.core.userdetails.User> getCurrentUser() {

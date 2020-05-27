@@ -38,9 +38,7 @@ public class UserSevice implements IUserService {
 		return userRepo.findAll();
 	}
 
-	/**
-	 *
-	 */
+	 
 	@Override
 	public User updateUser(User user, User updatedUser) {
 		user.setFullname(updatedUser.getFullname());

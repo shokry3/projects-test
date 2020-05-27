@@ -102,6 +102,7 @@ public class UserController {
 		return new ResponseEntity<Object>("Bad Request Please Check Your Inputs", HttpStatus.BAD_REQUEST);
 	}
 	
+	//handle front-end content ...... this need to be changed.
 	@GetMapping("/all")
 	public String allAccess() {
 		return "Public Content.";
