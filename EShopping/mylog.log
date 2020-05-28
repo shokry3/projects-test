@@ -11334,3 +11334,489 @@ org.springframework.web.HttpMediaTypeNotAcceptableException: Could not find acce
 [2020-05-27T13:39:16.016Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting ProtocolHandler ["http-nio-9898"]
 [2020-05-27T13:39:16.016Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [203] [INFO ] Tomcat started on port(s): 9898 (http) with context path ''
 [2020-05-27T13:39:16.016Z] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started EShoppingApplication in 8.175 seconds (JVM running for 9.414)
+[2020-05-27T13:40:16.016Z] [org.apache.juli.logging.DirectJDKLog] [http-nio-9898-exec-1] [173] [INFO ] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2020-05-27T13:40:16.016Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-9898-exec-1] [525] [INFO ] Initializing Servlet 'dispatcherServlet'
+[2020-05-27T13:40:16.016Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-9898-exec-1] [547] [INFO ] Completed initialization in 30 ms
+[2020-05-27T14:13:21.021Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m9s110ms819µs555ns).
+[2020-05-27T16:04:43.043Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h21m21s831ms695µs149ns).
+[2020-05-27T16:17:29.029Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-3] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-27T16:38:35.035Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-3] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-27T16:39:20.020Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-6] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-27T16:54:46.046Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-8] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-27T16:54:47.047Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-10] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-27T16:55:05.005Z] [org.apache.juli.logging.DirectJDKLog] [http-nio-9898-exec-1] [175] [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: com.app.shop.model.pojo.User.roles, could not initialize proxy - no Session
+	at org.hibernate.collection.internal.AbstractPersistentCollection.throwLazyInitializationException(AbstractPersistentCollection.java:606)
+	at org.hibernate.collection.internal.AbstractPersistentCollection.withTemporarySessionIfNeeded(AbstractPersistentCollection.java:218)
+	at org.hibernate.collection.internal.AbstractPersistentCollection.initialize(AbstractPersistentCollection.java:585)
+	at org.hibernate.collection.internal.AbstractPersistentCollection.read(AbstractPersistentCollection.java:149)
+	at org.hibernate.collection.internal.PersistentSet.iterator(PersistentSet.java:188)
+	at java.util.Spliterators$IteratorSpliterator.estimateSize(Spliterators.java:1821)
+	at java.util.Spliterator.getExactSizeIfKnown(Spliterator.java:408)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:480)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+	at java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:708)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:499)
+	at com.app.shop.security.UserPrincipal.getAuthorities(UserPrincipal.java:28)
+	at com.app.shop.security.jwt.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:35)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+[2020-05-27T16:55:05.005Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-1] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-27T16:55:14.014Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-4] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-27T16:55:36.036Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-5] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-27T17:01:20.020Z] [org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin] [RMI TCP Connection(137)-127.0.0.1] [159] [INFO ] Application shutdown requested.
+[2020-05-27T17:01:20.020Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [RMI TCP Connection(137)-127.0.0.1] [598] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-27T17:01:20.020Z] [com.zaxxer.hikari.HikariDataSource] [RMI TCP Connection(137)-127.0.0.1] [350] [INFO ] HikariPool-1 - Shutdown initiated...
+[2020-05-27T17:01:20.020Z] [com.zaxxer.hikari.HikariDataSource] [RMI TCP Connection(137)-127.0.0.1] [352] [INFO ] HikariPool-1 - Shutdown completed.
+[2020-05-27T17:01:25.025Z] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting EShoppingApplication on mshahatih with PID 14732 (C:\Users\mshehata\git\projects\EShopping\target\classes started by mShehata in C:\Users\mshehata\git\projects\EShopping)
+[2020-05-27T17:01:25.025Z] [org.springframework.boot.SpringApplication] [main] [651] [INFO ] No active profile set, falling back to default profiles: default
+[2020-05-27T17:01:26.026Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [127] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2020-05-27T17:01:27.027Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [187] [INFO ] Finished Spring Data repository scanning in 183ms. Found 9 JPA repository interfaces.
+[2020-05-27T17:01:27.027Z] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] [335] [INFO ] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@796065aa' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[2020-05-27T17:01:27.027Z] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] [335] [INFO ] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[2020-05-27T17:01:27.027Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [91] [INFO ] Tomcat initialized with port(s): 9898 (http)
+[2020-05-27T17:01:27.027Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing ProtocolHandler ["http-nio-9898"]
+[2020-05-27T17:01:27.027Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting service [Tomcat]
+[2020-05-27T17:01:27.027Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/9.0.34]
+[2020-05-27T17:01:28.028Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2020-05-27T17:01:28.028Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [284] [INFO ] Root WebApplicationContext: initialization completed in 2189 ms
+[2020-05-27T17:01:28.028Z] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [220] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2020-05-27T17:01:28.028Z] [org.hibernate.jpa.internal.util.LogHelper] [main] [31] [INFO ] HHH000204: Processing PersistenceUnitInfo [name: default]
+[2020-05-27T17:01:28.028Z] [org.hibernate.Version] [main] [44] [INFO ] HHH000412: Hibernate ORM core version 5.4.15.Final
+[2020-05-27T17:01:28.028Z] [org.hibernate.annotations.common.reflection.java.JavaReflectionManager] [main] [49] [INFO ] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+[2020-05-27T17:01:28.028Z] [com.zaxxer.hikari.HikariDataSource] [main] [110] [INFO ] HikariPool-1 - Starting...
+[2020-05-27T17:01:29.029Z] [com.zaxxer.hikari.HikariDataSource] [main] [123] [INFO ] HikariPool-1 - Start completed.
+[2020-05-27T17:01:29.029Z] [org.hibernate.dialect.Dialect] [main] [172] [INFO ] HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+[2020-05-27T17:01:30.030Z] [org.hibernate.tuple.PojoInstantiator] [main] [67] [INFO ] HHH000182: No default (no-argument) constructor for class: com.app.shop.model.pojo.CartItemsId (class must be instantiated by Interceptor)
+[2020-05-27T17:01:30.030Z] [org.hibernate.mapping.RootClass] [main] [287] [WARN ] HHH000038: Composite-id class does not override equals(): com.app.shop.model.pojo.CartItemsId
+[2020-05-27T17:01:30.030Z] [org.hibernate.mapping.RootClass] [main] [290] [WARN ] HHH000039: Composite-id class does not override hashCode(): com.app.shop.model.pojo.CartItemsId
+[2020-05-27T17:01:31.031Z] [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] [main] [52] [INFO ] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2020-05-27T17:01:31.031Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [416] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-27T17:01:33.033Z] [org.springframework.security.web.DefaultSecurityFilterChain] [main] [43] [INFO ] Creating filter chain: Ant [pattern='/**', OPTIONS], []
+[2020-05-27T17:01:33.033Z] [org.springframework.security.web.DefaultSecurityFilterChain] [main] [43] [INFO ] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3506bc8b, org.springframework.security.web.context.SecurityContextPersistenceFilter@72641613, org.springframework.security.web.header.HeaderWriterFilter@3c538e62, org.springframework.web.filter.CorsFilter@4bac0be5, org.springframework.security.web.authentication.logout.LogoutFilter@19c24321, com.app.shop.security.jwt.JwtAuthenticationFilter@5cf33d25, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@20e3b165, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7957aa57, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@368d51ca, org.springframework.security.web.session.SessionManagementFilter@5f5c0eda, org.springframework.security.web.access.ExceptionTranslationFilter@cc7909f, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@37393dab]
+[2020-05-27T17:01:34.034Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting ProtocolHandler ["http-nio-9898"]
+[2020-05-27T17:01:34.034Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [203] [INFO ] Tomcat started on port(s): 9898 (http) with context path ''
+[2020-05-27T17:01:34.034Z] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started EShoppingApplication in 8.701 seconds (JVM running for 10.206)
+[2020-05-27T17:03:23.023Z] [org.apache.juli.logging.DirectJDKLog] [http-nio-9898-exec-1] [173] [INFO ] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2020-05-27T17:03:23.023Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-9898-exec-1] [525] [INFO ] Initializing Servlet 'dispatcherServlet'
+[2020-05-27T17:03:23.023Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-9898-exec-1] [547] [INFO ] Completed initialization in 32 ms
+[2020-05-27T17:37:36.036Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-6] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-27T18:53:25.025Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m25s520ms691µs324ns).
+[2020-05-27T19:25:18.018Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m53s106ms489µs198ns).
+[2020-05-27T19:56:32.032Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m13s252ms483µs401ns).
+[2020-05-27T20:28:09.009Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m37s940ms744µs966ns).
+[2020-05-27T20:59:11.011Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m1s827ms618µs628ns).
+[2020-05-27T21:30:24.024Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m10s971ms374µs67ns).
+[2020-05-27T22:01:39.039Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m14s589ms711µs459ns).
+[2020-05-27T22:32:53.053Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m14s446ms549µs333ns).
+[2020-05-27T23:04:07.007Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m13s405ms174µs724ns).
+[2020-05-27T23:35:42.042Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m34s663ms413µs488ns).
+[2020-05-28T00:07:03.003Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m21s710ms25µs584ns).
+[2020-05-28T00:38:32.032Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m29s832ms924µs445ns).
+[2020-05-28T01:09:52.052Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m18s892ms372µs715ns).
+[2020-05-28T01:41:25.025Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m32s497ms725µs526ns).
+[2020-05-28T02:12:44.044Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m18s960ms818µs706ns).
+[2020-05-28T02:45:07.007Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m22s238ms622µs917ns).
+[2020-05-28T03:16:39.039Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m33s27ms932µs135ns).
+[2020-05-28T03:49:26.026Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m16s135ms354µs744ns).
+[2020-05-28T04:20:43.043Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m16s414ms713µs816ns).
+[2020-05-28T04:51:55.055Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m12s573ms456µs696ns).
+[2020-05-28T05:23:54.054Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m59s630ms865µs933ns).
+[2020-05-28T05:55:08.008Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m13s489ms615µs459ns).
+[2020-05-28T06:33:10.010Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m3s395ms200µs927ns).
+[2020-05-28T07:04:21.021Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m11s653ms297µs159ns).
+[2020-05-28T07:36:23.023Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m1s805ms906µs551ns).
+[2020-05-28T08:07:35.035Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m10s828ms562µs860ns).
+[2020-05-28T08:38:47.047Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m11s93ms910µs261ns).
+[2020-05-28T09:10:00.000Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m12s292ms66µs937ns).
+[2020-05-28T09:41:11.011Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m12s398ms436µs483ns).
+[2020-05-28T10:12:32.032Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m21s643ms672µs735ns).
+[2020-05-28T10:46:53.053Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m21s168ms106µs976ns).
+[2020-05-28T11:18:47.047Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m54s323ms18µs821ns).
+[2020-05-28T11:50:00.000Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m13s515ms93µs952ns).
+[2020-05-28T12:24:15.015Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m15s439ms510µs261ns).
+[2020-05-28T12:55:27.027Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m12s617ms480µs38ns).
+[2020-05-28T13:26:37.037Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m10s675ms9µs546ns).
+[2020-05-28T13:58:19.019Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m10s801ms341µs835ns).
+[2020-05-28T14:29:35.035Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m15s524ms25µs198ns).
+[2020-05-28T15:02:46.046Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m9s781ms422µs377ns).
+[2020-05-28T15:34:20.020Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m32s851ms609µs662ns).
+[2020-05-28T16:05:31.031Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m12s144ms27µs826ns).
+[2020-05-28T16:36:56.056Z] [com.zaxxer.hikari.pool.HikariPool$HouseKeeper] [HikariPool-1 housekeeper] [787] [WARN ] HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m24s822ms967µs34ns).
+[2020-05-28T17:13:47.047Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-8] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:16:52.052Z] [org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin] [RMI TCP Connection(1475)-127.0.0.1] [159] [INFO ] Application shutdown requested.
+[2020-05-28T17:16:52.052Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [RMI TCP Connection(1475)-127.0.0.1] [598] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-28T17:16:52.052Z] [com.zaxxer.hikari.HikariDataSource] [RMI TCP Connection(1475)-127.0.0.1] [350] [INFO ] HikariPool-1 - Shutdown initiated...
+[2020-05-28T17:16:52.052Z] [com.zaxxer.hikari.HikariDataSource] [RMI TCP Connection(1475)-127.0.0.1] [352] [INFO ] HikariPool-1 - Shutdown completed.
+[2020-05-28T17:17:03.003Z] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting EShoppingApplication on mshahatih with PID 8696 (C:\Users\mshehata\git\projects\EShopping\target\classes started by mShehata in C:\Users\mshehata\git\projects\EShopping)
+[2020-05-28T17:17:03.003Z] [org.springframework.boot.SpringApplication] [main] [651] [INFO ] No active profile set, falling back to default profiles: default
+[2020-05-28T17:17:04.004Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [127] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2020-05-28T17:17:05.005Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [187] [INFO ] Finished Spring Data repository scanning in 228ms. Found 9 JPA repository interfaces.
+[2020-05-28T17:17:05.005Z] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] [335] [INFO ] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@5b94ccbc' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[2020-05-28T17:17:05.005Z] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] [335] [INFO ] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[2020-05-28T17:17:06.006Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [91] [INFO ] Tomcat initialized with port(s): 9898 (http)
+[2020-05-28T17:17:06.006Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing ProtocolHandler ["http-nio-9898"]
+[2020-05-28T17:17:06.006Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting service [Tomcat]
+[2020-05-28T17:17:06.006Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/9.0.34]
+[2020-05-28T17:17:06.006Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2020-05-28T17:17:06.006Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [284] [INFO ] Root WebApplicationContext: initialization completed in 2442 ms
+[2020-05-28T17:17:06.006Z] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [220] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2020-05-28T17:17:06.006Z] [org.hibernate.jpa.internal.util.LogHelper] [main] [31] [INFO ] HHH000204: Processing PersistenceUnitInfo [name: default]
+[2020-05-28T17:17:06.006Z] [org.hibernate.Version] [main] [44] [INFO ] HHH000412: Hibernate ORM core version 5.4.15.Final
+[2020-05-28T17:17:06.006Z] [org.hibernate.annotations.common.reflection.java.JavaReflectionManager] [main] [49] [INFO ] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+[2020-05-28T17:17:07.007Z] [com.zaxxer.hikari.HikariDataSource] [main] [110] [INFO ] HikariPool-1 - Starting...
+[2020-05-28T17:17:07.007Z] [com.zaxxer.hikari.HikariDataSource] [main] [123] [INFO ] HikariPool-1 - Start completed.
+[2020-05-28T17:17:07.007Z] [org.hibernate.dialect.Dialect] [main] [172] [INFO ] HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+[2020-05-28T17:17:08.008Z] [org.hibernate.tuple.PojoInstantiator] [main] [67] [INFO ] HHH000182: No default (no-argument) constructor for class: com.app.shop.model.pojo.CartItemsId (class must be instantiated by Interceptor)
+[2020-05-28T17:17:08.008Z] [org.hibernate.mapping.RootClass] [main] [287] [WARN ] HHH000038: Composite-id class does not override equals(): com.app.shop.model.pojo.CartItemsId
+[2020-05-28T17:17:08.008Z] [org.hibernate.mapping.RootClass] [main] [290] [WARN ] HHH000039: Composite-id class does not override hashCode(): com.app.shop.model.pojo.CartItemsId
+[2020-05-28T17:17:10.010Z] [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] [main] [52] [INFO ] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2020-05-28T17:17:10.010Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [416] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-28T17:17:12.012Z] [org.springframework.security.web.DefaultSecurityFilterChain] [main] [43] [INFO ] Creating filter chain: Ant [pattern='/**', OPTIONS], []
+[2020-05-28T17:17:13.013Z] [org.springframework.security.web.DefaultSecurityFilterChain] [main] [43] [INFO ] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2fce8243, org.springframework.security.web.context.SecurityContextPersistenceFilter@ca0a21f, org.springframework.security.web.header.HeaderWriterFilter@7615666e, org.springframework.web.filter.CorsFilter@52fe87e0, org.springframework.security.web.authentication.logout.LogoutFilter@137d04d8, com.app.shop.security.jwt.JwtAuthenticationFilter@5cf33d25, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3dc39412, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6c25123e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@37393dab, org.springframework.security.web.session.SessionManagementFilter@8ce4320, org.springframework.security.web.access.ExceptionTranslationFilter@6773bab2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@72e1e587]
+[2020-05-28T17:17:13.013Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting ProtocolHandler ["http-nio-9898"]
+[2020-05-28T17:17:13.013Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [203] [INFO ] Tomcat started on port(s): 9898 (http) with context path ''
+[2020-05-28T17:17:13.013Z] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started EShoppingApplication in 10.31 seconds (JVM running for 12.493)
+[2020-05-28T17:17:27.027Z] [org.apache.juli.logging.DirectJDKLog] [http-nio-9898-exec-1] [173] [INFO ] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2020-05-28T17:17:27.027Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-9898-exec-1] [525] [INFO ] Initializing Servlet 'dispatcherServlet'
+[2020-05-28T17:17:27.027Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-9898-exec-1] [547] [INFO ] Completed initialization in 30 ms
+[2020-05-28T17:17:27.027Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-1] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:17:52.052Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-4] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:18:34.034Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-5] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:18:36.036Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-6] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:18:37.037Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-7] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:18:38.038Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-9] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:18:39.039Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-10] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:18:40.040Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-8] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:18:41.041Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-1] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:19:21.021Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-3] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:19:24.024Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-4] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:19:25.025Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-5] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:26:05.005Z] [org.apache.juli.logging.DirectJDKLog] [http-nio-9898-exec-9] [175] [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: com.app.shop.model.pojo.User.roles, could not initialize proxy - no Session
+	at org.hibernate.collection.internal.AbstractPersistentCollection.throwLazyInitializationException(AbstractPersistentCollection.java:606)
+	at org.hibernate.collection.internal.AbstractPersistentCollection.withTemporarySessionIfNeeded(AbstractPersistentCollection.java:218)
+	at org.hibernate.collection.internal.AbstractPersistentCollection.initialize(AbstractPersistentCollection.java:585)
+	at org.hibernate.collection.internal.AbstractPersistentCollection.read(AbstractPersistentCollection.java:149)
+	at org.hibernate.collection.internal.PersistentSet.iterator(PersistentSet.java:188)
+	at java.util.Spliterators$IteratorSpliterator.estimateSize(Spliterators.java:1821)
+	at java.util.Spliterator.getExactSizeIfKnown(Spliterator.java:408)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:480)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+	at java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:708)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:499)
+	at com.app.shop.security.UserPrincipal.getAuthorities(UserPrincipal.java:28)
+	at com.app.shop.security.jwt.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:35)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+[2020-05-28T17:26:05.005Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-9] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:26:50.050Z] [org.apache.juli.logging.DirectJDKLog] [http-nio-9898-exec-10] [175] [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: com.app.shop.model.pojo.User.roles, could not initialize proxy - no Session
+	at org.hibernate.collection.internal.AbstractPersistentCollection.throwLazyInitializationException(AbstractPersistentCollection.java:606)
+	at org.hibernate.collection.internal.AbstractPersistentCollection.withTemporarySessionIfNeeded(AbstractPersistentCollection.java:218)
+	at org.hibernate.collection.internal.AbstractPersistentCollection.initialize(AbstractPersistentCollection.java:585)
+	at org.hibernate.collection.internal.AbstractPersistentCollection.read(AbstractPersistentCollection.java:149)
+	at org.hibernate.collection.internal.PersistentSet.iterator(PersistentSet.java:188)
+	at java.util.Spliterators$IteratorSpliterator.estimateSize(Spliterators.java:1821)
+	at java.util.Spliterator.getExactSizeIfKnown(Spliterator.java:408)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:480)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+	at java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:708)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:499)
+	at com.app.shop.security.UserPrincipal.getAuthorities(UserPrincipal.java:28)
+	at com.app.shop.security.jwt.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:35)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+[2020-05-28T17:26:50.050Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-10] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:29:04.004Z] [org.apache.juli.logging.DirectJDKLog] [http-nio-9898-exec-1] [175] [ERROR] Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: com.app.shop.model.pojo.User.roles, could not initialize proxy - no Session
+	at org.hibernate.collection.internal.AbstractPersistentCollection.throwLazyInitializationException(AbstractPersistentCollection.java:606)
+	at org.hibernate.collection.internal.AbstractPersistentCollection.withTemporarySessionIfNeeded(AbstractPersistentCollection.java:218)
+	at org.hibernate.collection.internal.AbstractPersistentCollection.initialize(AbstractPersistentCollection.java:585)
+	at org.hibernate.collection.internal.AbstractPersistentCollection.read(AbstractPersistentCollection.java:149)
+	at org.hibernate.collection.internal.PersistentSet.iterator(PersistentSet.java:188)
+	at java.util.Spliterators$IteratorSpliterator.estimateSize(Spliterators.java:1821)
+	at java.util.Spliterator.getExactSizeIfKnown(Spliterator.java:408)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:480)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+	at java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:708)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:499)
+	at com.app.shop.security.UserPrincipal.getAuthorities(UserPrincipal.java:28)
+	at com.app.shop.security.jwt.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:35)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:92)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:92)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:77)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:373)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1590)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+[2020-05-28T17:29:04.004Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-1] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:33:46.046Z] [org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin] [RMI TCP Connection(31)-127.0.0.1] [159] [INFO ] Application shutdown requested.
+[2020-05-28T17:33:46.046Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [RMI TCP Connection(31)-127.0.0.1] [598] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-28T17:33:46.046Z] [com.zaxxer.hikari.HikariDataSource] [RMI TCP Connection(31)-127.0.0.1] [350] [INFO ] HikariPool-1 - Shutdown initiated...
+[2020-05-28T17:33:47.047Z] [com.zaxxer.hikari.HikariDataSource] [RMI TCP Connection(31)-127.0.0.1] [352] [INFO ] HikariPool-1 - Shutdown completed.
+[2020-05-28T17:33:51.051Z] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting EShoppingApplication on mshahatih with PID 25676 (C:\Users\mshehata\git\projects\EShopping\target\classes started by mShehata in C:\Users\mshehata\git\projects\EShopping)
+[2020-05-28T17:33:51.051Z] [org.springframework.boot.SpringApplication] [main] [651] [INFO ] No active profile set, falling back to default profiles: default
+[2020-05-28T17:33:52.052Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [127] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2020-05-28T17:33:52.052Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [187] [INFO ] Finished Spring Data repository scanning in 310ms. Found 9 JPA repository interfaces.
+[2020-05-28T17:33:53.053Z] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] [335] [INFO ] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@65fd6708' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[2020-05-28T17:33:53.053Z] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] [335] [INFO ] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[2020-05-28T17:33:53.053Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [91] [INFO ] Tomcat initialized with port(s): 9898 (http)
+[2020-05-28T17:33:53.053Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing ProtocolHandler ["http-nio-9898"]
+[2020-05-28T17:33:53.053Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting service [Tomcat]
+[2020-05-28T17:33:53.053Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/9.0.34]
+[2020-05-28T17:33:54.054Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2020-05-28T17:33:54.054Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [284] [INFO ] Root WebApplicationContext: initialization completed in 2597 ms
+[2020-05-28T17:33:54.054Z] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [220] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2020-05-28T17:33:54.054Z] [org.hibernate.jpa.internal.util.LogHelper] [main] [31] [INFO ] HHH000204: Processing PersistenceUnitInfo [name: default]
+[2020-05-28T17:33:54.054Z] [org.hibernate.Version] [main] [44] [INFO ] HHH000412: Hibernate ORM core version 5.4.15.Final
+[2020-05-28T17:33:54.054Z] [org.hibernate.annotations.common.reflection.java.JavaReflectionManager] [main] [49] [INFO ] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+[2020-05-28T17:33:54.054Z] [com.zaxxer.hikari.HikariDataSource] [main] [110] [INFO ] HikariPool-1 - Starting...
+[2020-05-28T17:33:55.055Z] [com.zaxxer.hikari.HikariDataSource] [main] [123] [INFO ] HikariPool-1 - Start completed.
+[2020-05-28T17:33:55.055Z] [org.hibernate.dialect.Dialect] [main] [172] [INFO ] HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+[2020-05-28T17:33:55.055Z] [org.hibernate.tuple.PojoInstantiator] [main] [67] [INFO ] HHH000182: No default (no-argument) constructor for class: com.app.shop.model.pojo.CartItemsId (class must be instantiated by Interceptor)
+[2020-05-28T17:33:55.055Z] [org.hibernate.mapping.RootClass] [main] [287] [WARN ] HHH000038: Composite-id class does not override equals(): com.app.shop.model.pojo.CartItemsId
+[2020-05-28T17:33:55.055Z] [org.hibernate.mapping.RootClass] [main] [290] [WARN ] HHH000039: Composite-id class does not override hashCode(): com.app.shop.model.pojo.CartItemsId
+[2020-05-28T17:33:56.056Z] [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] [main] [52] [INFO ] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2020-05-28T17:33:56.056Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [416] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-28T17:33:58.058Z] [org.springframework.security.web.DefaultSecurityFilterChain] [main] [43] [INFO ] Creating filter chain: Ant [pattern='/**', OPTIONS], []
+[2020-05-28T17:33:58.058Z] [org.springframework.security.web.DefaultSecurityFilterChain] [main] [43] [INFO ] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1add90e0, org.springframework.security.web.context.SecurityContextPersistenceFilter@cc7909f, org.springframework.security.web.header.HeaderWriterFilter@3e5cbcfe, org.springframework.web.filter.CorsFilter@7bf94e91, org.springframework.security.web.authentication.logout.LogoutFilter@7491cdae, com.app.shop.security.jwt.JwtAuthenticationFilter@13c81bc5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@42012093, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@147ad4bb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3fdbb7ee, org.springframework.security.web.session.SessionManagementFilter@10728fe8, org.springframework.security.web.access.ExceptionTranslationFilter@16c9f7f0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@658098a2]
+[2020-05-28T17:33:59.059Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting ProtocolHandler ["http-nio-9898"]
+[2020-05-28T17:33:59.059Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [203] [INFO ] Tomcat started on port(s): 9898 (http) with context path ''
+[2020-05-28T17:33:59.059Z] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started EShoppingApplication in 8.119 seconds (JVM running for 9.373)
+[2020-05-28T17:34:21.021Z] [org.apache.juli.logging.DirectJDKLog] [http-nio-9898-exec-1] [173] [INFO ] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2020-05-28T17:34:21.021Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-9898-exec-1] [525] [INFO ] Initializing Servlet 'dispatcherServlet'
+[2020-05-28T17:34:21.021Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-9898-exec-1] [547] [INFO ] Completed initialization in 29 ms
+[2020-05-28T17:34:21.021Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-1] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:37:28.028Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-9] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:37:30.030Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-10] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:37:31.031Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-1] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:37:32.032Z] [com.app.shop.security.jwt.AuthEntryPointJwt] [http-nio-9898-exec-2] [23] [ERROR] Unauthorized error: Full authentication is required to access this resource
+[2020-05-28T17:40:05.005Z] [org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin] [RMI TCP Connection(17)-127.0.0.1] [159] [INFO ] Application shutdown requested.
+[2020-05-28T17:40:05.005Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [RMI TCP Connection(17)-127.0.0.1] [598] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-28T17:40:05.005Z] [com.zaxxer.hikari.HikariDataSource] [RMI TCP Connection(17)-127.0.0.1] [350] [INFO ] HikariPool-1 - Shutdown initiated...
+[2020-05-28T17:40:05.005Z] [com.zaxxer.hikari.HikariDataSource] [RMI TCP Connection(17)-127.0.0.1] [352] [INFO ] HikariPool-1 - Shutdown completed.
+[2020-05-28T17:40:09.009Z] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting EShoppingApplication on mshahatih with PID 27244 (C:\Users\mshehata\git\projects\EShopping\target\classes started by mShehata in C:\Users\mshehata\git\projects\EShopping)
+[2020-05-28T17:40:09.009Z] [org.springframework.boot.SpringApplication] [main] [651] [INFO ] No active profile set, falling back to default profiles: default
+[2020-05-28T17:40:10.010Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [127] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2020-05-28T17:40:10.010Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [187] [INFO ] Finished Spring Data repository scanning in 185ms. Found 9 JPA repository interfaces.
+[2020-05-28T17:40:11.011Z] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] [335] [INFO ] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@562457e1' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[2020-05-28T17:40:11.011Z] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] [335] [INFO ] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[2020-05-28T17:40:11.011Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [91] [INFO ] Tomcat initialized with port(s): 9898 (http)
+[2020-05-28T17:40:11.011Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing ProtocolHandler ["http-nio-9898"]
+[2020-05-28T17:40:11.011Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting service [Tomcat]
+[2020-05-28T17:40:11.011Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/9.0.34]
+[2020-05-28T17:40:11.011Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2020-05-28T17:40:11.011Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [284] [INFO ] Root WebApplicationContext: initialization completed in 2179 ms
+[2020-05-28T17:40:12.012Z] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [220] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2020-05-28T17:40:12.012Z] [org.hibernate.jpa.internal.util.LogHelper] [main] [31] [INFO ] HHH000204: Processing PersistenceUnitInfo [name: default]
+[2020-05-28T17:40:12.012Z] [org.hibernate.Version] [main] [44] [INFO ] HHH000412: Hibernate ORM core version 5.4.15.Final
+[2020-05-28T17:40:12.012Z] [org.hibernate.annotations.common.reflection.java.JavaReflectionManager] [main] [49] [INFO ] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+[2020-05-28T17:40:12.012Z] [com.zaxxer.hikari.HikariDataSource] [main] [110] [INFO ] HikariPool-1 - Starting...
+[2020-05-28T17:40:13.013Z] [com.zaxxer.hikari.HikariDataSource] [main] [123] [INFO ] HikariPool-1 - Start completed.
+[2020-05-28T17:40:13.013Z] [org.hibernate.dialect.Dialect] [main] [172] [INFO ] HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+[2020-05-28T17:40:13.013Z] [org.hibernate.tuple.PojoInstantiator] [main] [67] [INFO ] HHH000182: No default (no-argument) constructor for class: com.app.shop.model.pojo.CartItemsId (class must be instantiated by Interceptor)
+[2020-05-28T17:40:13.013Z] [org.hibernate.mapping.RootClass] [main] [287] [WARN ] HHH000038: Composite-id class does not override equals(): com.app.shop.model.pojo.CartItemsId
+[2020-05-28T17:40:13.013Z] [org.hibernate.mapping.RootClass] [main] [290] [WARN ] HHH000039: Composite-id class does not override hashCode(): com.app.shop.model.pojo.CartItemsId
+[2020-05-28T17:40:14.014Z] [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] [main] [52] [INFO ] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2020-05-28T17:40:14.014Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [416] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-28T17:40:16.016Z] [org.springframework.security.web.DefaultSecurityFilterChain] [main] [43] [INFO ] Creating filter chain: Ant [pattern='/**', OPTIONS], []
+[2020-05-28T17:40:16.016Z] [org.springframework.security.web.DefaultSecurityFilterChain] [main] [43] [INFO ] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6b6606d1, org.springframework.security.web.context.SecurityContextPersistenceFilter@19c24321, org.springframework.security.web.header.HeaderWriterFilter@697b48e4, org.springframework.web.filter.CorsFilter@27605b87, org.springframework.security.web.authentication.logout.LogoutFilter@7e28f150, com.app.shop.security.jwt.JwtAuthenticationFilter@2e91cf69, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@97cb8dc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@563ab6d5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1fc4483f, org.springframework.security.web.session.SessionManagementFilter@8c34631, org.springframework.security.web.access.ExceptionTranslationFilter@7491cdae, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@301f9aa0]
+[2020-05-28T17:40:16.016Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting ProtocolHandler ["http-nio-9898"]
+[2020-05-28T17:40:17.017Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [203] [INFO ] Tomcat started on port(s): 9898 (http) with context path ''
+[2020-05-28T17:40:17.017Z] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started EShoppingApplication in 7.733 seconds (JVM running for 8.995)
+[2020-05-28T17:40:24.024Z] [org.apache.juli.logging.DirectJDKLog] [http-nio-9898-exec-1] [173] [INFO ] Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2020-05-28T17:40:24.024Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-9898-exec-1] [525] [INFO ] Initializing Servlet 'dispatcherServlet'
+[2020-05-28T17:40:24.024Z] [org.springframework.web.servlet.FrameworkServlet] [http-nio-9898-exec-1] [547] [INFO ] Completed initialization in 34 ms
+[2020-05-28T17:40:34.034Z] [org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin] [RMI TCP Connection(8)-127.0.0.1] [159] [INFO ] Application shutdown requested.
+[2020-05-28T17:40:34.034Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [RMI TCP Connection(8)-127.0.0.1] [598] [INFO ] Closing JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-28T17:40:34.034Z] [com.zaxxer.hikari.HikariDataSource] [RMI TCP Connection(8)-127.0.0.1] [350] [INFO ] HikariPool-1 - Shutdown initiated...
+[2020-05-28T17:40:34.034Z] [com.zaxxer.hikari.HikariDataSource] [RMI TCP Connection(8)-127.0.0.1] [352] [INFO ] HikariPool-1 - Shutdown completed.
+[2020-05-28T17:40:38.038Z] [org.springframework.boot.StartupInfoLogger] [main] [55] [INFO ] Starting EShoppingApplication on mshahatih with PID 24732 (C:\Users\mshehata\git\projects\EShopping\target\classes started by mShehata in C:\Users\mshehata\git\projects\EShopping)
+[2020-05-28T17:40:38.038Z] [org.springframework.boot.SpringApplication] [main] [651] [INFO ] No active profile set, falling back to default profiles: default
+[2020-05-28T17:40:39.039Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [127] [INFO ] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+[2020-05-28T17:40:40.040Z] [org.springframework.data.repository.config.RepositoryConfigurationDelegate] [main] [187] [INFO ] Finished Spring Data repository scanning in 189ms. Found 9 JPA repository interfaces.
+[2020-05-28T17:40:40.040Z] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] [335] [INFO ] Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@769d513' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[2020-05-28T17:40:40.040Z] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker] [main] [335] [INFO ] Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+[2020-05-28T17:40:40.040Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [91] [INFO ] Tomcat initialized with port(s): 9898 (http)
+[2020-05-28T17:40:40.040Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing ProtocolHandler ["http-nio-9898"]
+[2020-05-28T17:40:40.040Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting service [Tomcat]
+[2020-05-28T17:40:40.040Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting Servlet engine: [Apache Tomcat/9.0.34]
+[2020-05-28T17:40:41.041Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Initializing Spring embedded WebApplicationContext
+[2020-05-28T17:40:41.041Z] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] [main] [284] [INFO ] Root WebApplicationContext: initialization completed in 2170 ms
+[2020-05-28T17:40:41.041Z] [org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration] [main] [220] [WARN ] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+[2020-05-28T17:40:41.041Z] [org.hibernate.jpa.internal.util.LogHelper] [main] [31] [INFO ] HHH000204: Processing PersistenceUnitInfo [name: default]
+[2020-05-28T17:40:41.041Z] [org.hibernate.Version] [main] [44] [INFO ] HHH000412: Hibernate ORM core version 5.4.15.Final
+[2020-05-28T17:40:41.041Z] [org.hibernate.annotations.common.reflection.java.JavaReflectionManager] [main] [49] [INFO ] HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+[2020-05-28T17:40:41.041Z] [com.zaxxer.hikari.HikariDataSource] [main] [110] [INFO ] HikariPool-1 - Starting...
+[2020-05-28T17:40:42.042Z] [com.zaxxer.hikari.HikariDataSource] [main] [123] [INFO ] HikariPool-1 - Start completed.
+[2020-05-28T17:40:42.042Z] [org.hibernate.dialect.Dialect] [main] [172] [INFO ] HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+[2020-05-28T17:40:43.043Z] [org.hibernate.tuple.PojoInstantiator] [main] [67] [INFO ] HHH000182: No default (no-argument) constructor for class: com.app.shop.model.pojo.CartItemsId (class must be instantiated by Interceptor)
+[2020-05-28T17:40:43.043Z] [org.hibernate.mapping.RootClass] [main] [287] [WARN ] HHH000038: Composite-id class does not override equals(): com.app.shop.model.pojo.CartItemsId
+[2020-05-28T17:40:43.043Z] [org.hibernate.mapping.RootClass] [main] [290] [WARN ] HHH000039: Composite-id class does not override hashCode(): com.app.shop.model.pojo.CartItemsId
+[2020-05-28T17:40:43.043Z] [org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator] [main] [52] [INFO ] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[2020-05-28T17:40:43.043Z] [org.springframework.orm.jpa.AbstractEntityManagerFactoryBean] [main] [416] [INFO ] Initialized JPA EntityManagerFactory for persistence unit 'default'
+[2020-05-28T17:40:45.045Z] [org.springframework.security.web.DefaultSecurityFilterChain] [main] [43] [INFO ] Creating filter chain: Ant [pattern='/**', OPTIONS], []
+[2020-05-28T17:40:46.046Z] [org.springframework.security.web.DefaultSecurityFilterChain] [main] [43] [INFO ] Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3abdc11d, org.springframework.security.web.context.SecurityContextPersistenceFilter@1e836aed, org.springframework.security.web.header.HeaderWriterFilter@684f7f1c, org.springframework.web.filter.CorsFilter@624be1d4, org.springframework.security.web.authentication.logout.LogoutFilter@c247363, com.app.shop.security.jwt.JwtAuthenticationFilter@62c6db99, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@8dedec8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3922b297, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@336e17be, org.springframework.security.web.session.SessionManagementFilter@4be3de36, org.springframework.security.web.access.ExceptionTranslationFilter@15a2fddd, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@49222187]
+[2020-05-28T17:40:46.046Z] [org.apache.juli.logging.DirectJDKLog] [main] [173] [INFO ] Starting ProtocolHandler ["http-nio-9898"]
+[2020-05-28T17:40:46.046Z] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] [main] [203] [INFO ] Tomcat started on port(s): 9898 (http) with context path ''
+[2020-05-28T17:40:46.046Z] [org.springframework.boot.StartupInfoLogger] [main] [61] [INFO ] Started EShoppingApplication in 7.977 seconds (JVM running for 9.44)

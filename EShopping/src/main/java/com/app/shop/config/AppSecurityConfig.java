@@ -82,7 +82,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter{
 		httpSecurity.cors().and().csrf().disable()
 		.exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and() // STATELESS sesstion for jwt auth.
-		.authorizeRequests().antMatchers("/store/api/r/**", "/login", "/store/api/auth/**").permitAll()
+		.authorizeRequests().antMatchers("/login", "/store/api/auth/**").permitAll()
 		.anyRequest().authenticated() ;
 //		.and()  // this hashed part for spring normal security login #Example Part 1
 //		.formLogin() // need only if login using custome jsp login page.
