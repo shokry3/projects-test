@@ -1,6 +1,8 @@
 package com.app.shop.controller;
 
 import java.security.Principal;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -43,11 +45,12 @@ public class AuthController {
 	}
 	
 	//to validate user name register ....
-	@GetMapping("/username/{id}")
+	@GetMapping("/username/{id}") 
 	public ResponseEntity<String> getUsername(@PathVariable("id") String id) throws ResourceNotFoundException {
+		Map<String,String> mymap = new HashMap<String, String>();
 		User user = new User();
 		try {
-			user = authService.getByUsername("" + id)
+			user = authService.getByUsername(id)
 					.orElseThrow(() -> new ResourceNotFoundException("User not found for this username :: " + id));
 		} catch (NumberFormatException e) {
 		}
@@ -59,12 +62,24 @@ public class AuthController {
 	public ResponseEntity<String> getUserEmail(@RequestParam String id) throws ResourceNotFoundException {
 		User user = new User();
 		try {
-			user = authService.getByEmail("" + id)
+			user = authService.getByEmail(id)
 					.orElseThrow(() -> new ResourceNotFoundException("User not found for this email :: " + id));
 		} catch (NumberFormatException e) {
 		}
 		return ResponseEntity.ok().body(user.getEmail());
 	}
+	
+	//to validate user email register.....
+		@GetMapping("/usermobile")
+		public ResponseEntity<String> getUserMobile(@RequestParam String id) throws ResourceNotFoundException {
+			User user = new User();
+			try {
+				user = authService.getByMobile(id)
+						.orElseThrow(() -> new ResourceNotFoundException("User not found for this mobile :: " + id));
+			} catch (NumberFormatException e) {
+			}
+			return ResponseEntity.ok().body(user.getMobile());
+		}
 
 	@RequestMapping("/user")
 	@ResponseBody

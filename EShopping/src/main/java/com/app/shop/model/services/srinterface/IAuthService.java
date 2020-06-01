@@ -15,5 +15,7 @@ public interface IAuthService {
 	 public Optional<User> getByUsername(String username);
 	 
 	 public Optional<User> getByEmail(String email);
+	 
+	 public Optional<User> getByMobile(String mobile);
 
 }

@@ -73,6 +73,12 @@ public class AuthService implements IAuthService {
 	}
 	
 	@Override
+	public Optional<User> getByMobile(String mobile) {
+		return userRepo.findByMobile(mobile);
+	}
+	
+	
+	@Override
 	public Optional<User> getByEmail(String email) {
 		return userRepo.findByEmail(email);
 	}
