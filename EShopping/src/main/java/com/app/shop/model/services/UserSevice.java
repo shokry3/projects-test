@@ -45,7 +45,7 @@ public class UserSevice implements IUserService {
 		user.setEmail(updatedUser.getEmail());
 		user.setAddress(updatedUser.getAddress());
 		user.setMobile(updatedUser.getMobile());
-		user.setPassword(updatedUser.getPassword());
+//		user.setPassword(updatedUser.getPassword());
 		user.setPhoto(updatedUser.getPhoto());
 		user.setPostalcode(updatedUser.getPostalcode());
 		return this.saveUser(user);

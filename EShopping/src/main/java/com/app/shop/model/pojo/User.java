@@ -205,9 +205,7 @@ public class User {
 
 	public void setUserCarts(Set<ShoppingCart> userCarts) {
 		this.userCarts = userCarts;
-	}
-	
-	
+	}	
 
 	@Override
 	public String toString() {

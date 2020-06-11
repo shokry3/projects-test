@@ -2,7 +2,7 @@ package com.app.shop.model.enums;
 
 public enum ItemRate {
 
-	EXCELLENT(5), VERY_GOOD(4), NORMAL(3), GOOD(2), BAD(1);
+	BAD(0), GOOD(1), NORMAL(2), VERY_GOOD(3),EXCELLENT(4);
 
 	private int rate;
 

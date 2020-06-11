@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.shop.model.dao.ItemRepository;
+import com.app.shop.model.enums.SType;
 import com.app.shop.model.pojo.Item;
 import com.app.shop.model.services.srinterface.IItemService;
 
@@ -32,6 +33,26 @@ public class ItemService implements IItemService {
 	@Override
 	public Optional<Item> getByItemname(String itemName) {
 		return itemRepo.findByItemName(itemName);
+	}
+	
+	@Override
+	public List<Item> getItemsByType(String type, long storeId) {
+		return itemRepo.findByType(type, storeId);
+	}
+	
+	@Override
+	public List<Item> getItemsByStore(long storeId) {
+		return itemRepo.findByItemStore(storeId);
+	}
+	
+	@Override
+	public List<Item> getDealerItems(long dealerId) {
+		return itemRepo.findByItemDealer(dealerId);
+	}
+	
+	@Override
+	public List<Item> getDealerItemsByType(String type, long dealerId) {
+		return itemRepo.findDealerItemsByType(type, dealerId);
 	}
 
 	@Override

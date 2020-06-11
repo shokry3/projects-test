@@ -19,13 +19,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.shop.exceptionhandel.ResourceNotFoundException;
+import com.app.shop.model.enums.SType;
 import com.app.shop.model.pojo.Item;
 import com.app.shop.model.services.srinterface.IItemService;
 
 @RestController
 @RequestMapping("/store/api/t/")
 public class ItemController {
-	
+
 	@Autowired
 	IItemService itemService;
 
@@ -73,6 +74,5 @@ public class ItemController {
 		response.put("deleted", Boolean.TRUE);
 		return response;
 	}
-
 
 }

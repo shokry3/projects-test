@@ -19,7 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.shop.exceptionhandel.ResourceNotFoundException;
+import com.app.shop.model.enums.SType;
+import com.app.shop.model.pojo.Item;
 import com.app.shop.model.pojo.Store;
+import com.app.shop.model.services.srinterface.IItemService;
 import com.app.shop.model.services.srinterface.IStoreService;
 
 @RestController
@@ -28,6 +31,9 @@ public class StoreController {
 	
 	@Autowired
 	IStoreService storeService;
+	
+	@Autowired
+	IItemService itemService;
 
 	@GetMapping("/stores")
 	public ResponseEntity<List<Store>> getAllStores() {
@@ -73,7 +79,17 @@ public class StoreController {
 		response.put("deleted", Boolean.TRUE);
 		return response;
 	}
+	
+	//End point methods to get store items by store id and by item type .
+	
+	@GetMapping("/allItems/{id}")
+	public ResponseEntity<List<Item>> getAllItems(@PathVariable("id") long storeId) {
+		return new ResponseEntity<>(itemService.getItemsByStore(storeId), HttpStatus.OK);
+	}
 
-
+	@GetMapping("/items/{id}/{type}")
+	public ResponseEntity<List<Item>> getItemsByType(@PathVariable("id") long storeId, @PathVariable("type") String type) {
+		return new ResponseEntity<>(itemService.getItemsByType(type, storeId), HttpStatus.OK);
+	}
 
 }

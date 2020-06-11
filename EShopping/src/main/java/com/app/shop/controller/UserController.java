@@ -28,8 +28,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.shop.exceptionhandel.ResourceNotFoundException;
+import com.app.shop.model.pojo.Item;
 import com.app.shop.model.pojo.ShoppingCart;
 import com.app.shop.model.pojo.User;
+import com.app.shop.model.services.srinterface.IItemService;
 import com.app.shop.model.services.srinterface.IShopCartService;
 import com.app.shop.model.services.srinterface.IUserService;
 
@@ -39,9 +41,12 @@ public class UserController {
 
 	@Autowired
 	IUserService userService;
-	
+
 	@Autowired
 	IShopCartService userCartService;
+
+	@Autowired
+	IItemService itemService;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -76,11 +81,13 @@ public class UserController {
 	@PutMapping("/users/{id}")
 	public ResponseEntity<User> updateUser(@PathVariable("id") long id, @Valid @RequestBody User userDetails)
 			throws ResourceNotFoundException {
+		System.out.println(" User Updated photoooo :  " + userDetails.getPhoto());
 		User user = userService.getUserById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + id));
 		String cryptPassword = passwordEncoder.encode(userDetails.getPassword());
 		userDetails.setPassword(cryptPassword);
 		final User updatedUser = userService.updateUser(user, userDetails);
+		System.out.println(" User Updated:  " + updatedUser);
 		return ResponseEntity.ok(updatedUser);
 	}
 
@@ -95,25 +102,37 @@ public class UserController {
 		return response;
 	}
 
+	// End point methods to get dealer items by store id and by item type .
+
+	@GetMapping("/allItems/{id}")
+	public ResponseEntity<List<Item>> getAllItems(@PathVariable("id") long dealerId) {
+		return new ResponseEntity<>(itemService.getDealerItems(dealerId), HttpStatus.OK);
+	}
+	
+	@GetMapping("/items/{id}/{type}")
+	public ResponseEntity<List<Item>> getItemsByType(@PathVariable("id") long dealerId, @PathVariable("type") String type) {
+		return new ResponseEntity<>(itemService.getDealerItemsByType(type, dealerId), HttpStatus.OK);
+	}
+
 	@ResponseBody
 	public ResponseEntity<Object> MessageNotReadableException(HttpMessageNotReadableException ex,
 			HttpServletResponse response) {
 		ex.printStackTrace();
 		return new ResponseEntity<Object>("Bad Request Please Check Your Inputs", HttpStatus.BAD_REQUEST);
 	}
-	
-	//handle front-end content ...... this need to be changed.
+
+	// handle front-end content ...... this need to be changed.
 	@GetMapping("/all")
 	public String allAccess() {
 		return "Public Content.";
 	}
-	
+
 	@GetMapping("/user")
 	@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
 	public String userAccess() {
 		return "User Content.";
 	}
-	
+
 	@GetMapping("/mod")
 	@PreAuthorize("hasRole('MODERATOR')")
 	public String moderatorAccess() {
@@ -125,37 +144,31 @@ public class UserController {
 	public String adminAccess() {
 		return "Admin Board.";
 	}
-	
-	
-	//get shopping cart for user or create new.
-	//1- get all current user requests
+
+	// get shopping cart for user or create new.
+	// 1- get all current user requests
 	@GetMapping("/allCarts/{id}")
 	public ResponseEntity<List<ShoppingCart>> getAllUserCarts(@PathVariable("id") long userId) {
 		return new ResponseEntity<>(userCartService.getAllUserCarts(userId), HttpStatus.OK);
 	}
-	
-	//2- get curren shopping cart for the current user session
+
+	// 2- get curren shopping cart for the current user session
 	@GetMapping("/carts/{id}")
-	public ResponseEntity<ShoppingCart> getUserCart(@PathVariable("id") long userId)  throws ResourceNotFoundException {
-		ShoppingCart cart = userCartService.getUserCart(userId)
-				.orElseThrow(() -> new ResourceNotFoundException("no cart found for current user with id :: " + userId));
+	public ResponseEntity<ShoppingCart> getUserCart(@PathVariable("id") long userId) throws ResourceNotFoundException {
+		ShoppingCart cart = userCartService.getUserCart(userId).orElseThrow(
+				() -> new ResourceNotFoundException("no cart found for current user with id :: " + userId));
 		return ResponseEntity.ok().body(cart);
 	}
-	
-	
-	//get logged user by username .........
-		private User getLoggedinUser(){
-			Object principal = SecurityContextHolder.getContext()
-					.getAuthentication().getPrincipal();
-			
-			if (principal instanceof UserDetails) {
-				if(((UserDetails) principal).getUsername() != null) {
-					return userService.getByUsername(((UserDetails) principal).getUsername()).get();
-				}
+
+	// get logged user by username .........
+	private User getLoggedinUser() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails) {
+			if (((UserDetails) principal).getUsername() != null) {
+				return userService.getByUsername(((UserDetails) principal).getUsername()).get();
 			}
-			
-			return null;
 		}
-	
-	
+		return null;
+	}
+
 }
