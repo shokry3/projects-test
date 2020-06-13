@@ -46,9 +46,6 @@ public class UserController {
 	IShopCartService userCartService;
 
 	@Autowired
-	IItemService itemService;
-
-	@Autowired
 	private PasswordEncoder passwordEncoder;
 
 	@GetMapping("/users")
@@ -102,31 +99,13 @@ public class UserController {
 		return response;
 	}
 
-	// End point methods to get dealer items by store id and by item type .
-
-	@GetMapping("/allItems/{id}")
-	public ResponseEntity<List<Item>> getAllItems(@PathVariable("id") long dealerId) {
-		return new ResponseEntity<>(itemService.getDealerItems(dealerId), HttpStatus.OK);
-	}
-	
-	@GetMapping("/items/{id}/{type}")
-	public ResponseEntity<List<Item>> getItemsByType(@PathVariable("id") long dealerId, @PathVariable("type") String type) {
-		return new ResponseEntity<>(itemService.getDealerItemsByType(type, dealerId), HttpStatus.OK);
-	}
-
-	@ResponseBody
-	public ResponseEntity<Object> MessageNotReadableException(HttpMessageNotReadableException ex,
-			HttpServletResponse response) {
-		ex.printStackTrace();
-		return new ResponseEntity<Object>("Bad Request Please Check Your Inputs", HttpStatus.BAD_REQUEST);
-	}
-
 	// handle front-end content ...... this need to be changed.
 	@GetMapping("/all")
 	public String allAccess() {
 		return "Public Content.";
 	}
 
+	//these three end point methods to get user content privilege against logged user role.
 	@GetMapping("/user")
 	@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
 	public String userAccess() {
@@ -144,6 +123,7 @@ public class UserController {
 	public String adminAccess() {
 		return "Admin Board.";
 	}
+	//end of privilege end point methods...
 
 	// get shopping cart for user or create new.
 	// 1- get all current user requests
@@ -169,6 +149,14 @@ public class UserController {
 			}
 		}
 		return null;
+	}
+
+	// method to handle exception against end point execution....
+	@ResponseBody
+	public ResponseEntity<Object> MessageNotReadableException(HttpMessageNotReadableException ex,
+			HttpServletResponse response) {
+		ex.printStackTrace();
+		return new ResponseEntity<Object>("Bad Request Please Check Your Inputs", HttpStatus.BAD_REQUEST);
 	}
 
 }

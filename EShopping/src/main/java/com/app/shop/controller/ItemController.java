@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.shop.exceptionhandel.ResourceNotFoundException;
 import com.app.shop.model.enums.SType;
 import com.app.shop.model.pojo.Item;
+import com.app.shop.model.pojo.ItemInfo;
 import com.app.shop.model.services.srinterface.IItemService;
 
 @RestController
@@ -30,9 +31,20 @@ public class ItemController {
 	@Autowired
 	IItemService itemService;
 
+	// End point method not used yet......
+//	@GetMapping("/items")
+//	public ResponseEntity<List<Item>> getAllItems() {
+//		return new ResponseEntity<>(itemService.getAllItems(), HttpStatus.OK);
+//	}
+
+	// End point methods to get store items by item info (store_id, dealer_id, type)
+	// or get all items in case null parameter value.
 	@GetMapping("/items")
-	public ResponseEntity<List<Item>> getAllItems() {
-		return new ResponseEntity<>(itemService.getAllItems(), HttpStatus.OK);
+	public ResponseEntity<List<Item>> getAllItems(@RequestBody(required = false) ItemInfo itemInfo) {
+		if (itemInfo == null) {
+			itemInfo = new ItemInfo();
+		}
+		return new ResponseEntity<>(itemService.getItemsByStore(itemInfo), HttpStatus.OK);
 	}
 
 	@GetMapping("/items/{id}")

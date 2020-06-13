@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.app.shop.model.dao.ItemRepository;
 import com.app.shop.model.enums.SType;
 import com.app.shop.model.pojo.Item;
+import com.app.shop.model.pojo.ItemInfo;
 import com.app.shop.model.services.srinterface.IItemService;
 
 @Service
@@ -36,23 +37,8 @@ public class ItemService implements IItemService {
 	}
 	
 	@Override
-	public List<Item> getItemsByType(String type, long storeId) {
-		return itemRepo.findByType(type, storeId);
-	}
-	
-	@Override
-	public List<Item> getItemsByStore(long storeId) {
-		return itemRepo.findByItemStore(storeId);
-	}
-	
-	@Override
-	public List<Item> getDealerItems(long dealerId) {
-		return itemRepo.findByItemDealer(dealerId);
-	}
-	
-	@Override
-	public List<Item> getDealerItemsByType(String type, long dealerId) {
-		return itemRepo.findDealerItemsByType(type, dealerId);
+	public List<Item> getItemsByStore(ItemInfo itemInfo) {
+		return itemRepo.findByItemStore(itemInfo.getStoreId(), itemInfo.getDealerId(), itemInfo.getType());
 	}
 
 	@Override
