@@ -35,30 +35,33 @@ import com.app.shop.model.services.srinterface.IUserService;
 @RequestMapping("/store/api/c/")
 public class ShopCartController {
 
-
 	@Autowired
 	IShopCartService cartService;
-	
+
 	@Autowired
 	ICartItemsService cartItemService;
-	
+
+	@Autowired
+	IItemService itemService;
+
 	@Autowired
 	IUserService userService;
-	
-	// 1- End points methods for shopping cart  services
+
+	// 1- End points methods for shopping cart services
 	@PutMapping("/carts/{id}")
-	public ResponseEntity<ShoppingCart> updateCart( @PathVariable("id") long cartId, ShoppingCart cartDetails) throws ResourceNotFoundException {
+	public ResponseEntity<ShoppingCart> updateCart(@PathVariable("id") long cartId, ShoppingCart cartDetails)
+			throws ResourceNotFoundException {
 		ShoppingCart cart = cartService.getCartById(cartId)
 				.orElseThrow(() -> new ResourceNotFoundException("Cart not found for this id :: " + cartId));
-		if(getLoggedinUser() != null) {
+		if (getLoggedinUser() != null) {
 			cart.setCartUser(getLoggedinUser());
 		}
 		final ShoppingCart updatedItem = cartService.updateCart(cart, cartDetails);
 		return ResponseEntity.ok(updatedItem);
 	}
-	
+
 	@DeleteMapping("/carts/{id}")
-	public Map<String, Boolean> deleteCart( @PathVariable("id") long cartId) throws ResourceNotFoundException {
+	public Map<String, Boolean> deleteCart(@PathVariable("id") long cartId) throws ResourceNotFoundException {
 		ShoppingCart cart = cartService.getCartById(cartId)
 				.orElseThrow(() -> new ResourceNotFoundException("Cart not found for this id :: " + cartId));
 
@@ -67,18 +70,25 @@ public class ShopCartController {
 		response.put("deleted", Boolean.TRUE);
 		return response;
 	}
-	
-	
-    // 2- End points methods for cart items services
+
+	// 2- End points methods for cart items services
 	@GetMapping("/items")
 	public ResponseEntity<List<CartItems>> getAllItems(long cartId) {
 		return new ResponseEntity<>(cartItemService.getAllItems(cartId), HttpStatus.OK);
 	}
 
 	@PostMapping(path = "/items", consumes = { "application/json" })
-	public ResponseEntity<CartItems> addItem(@Valid @RequestBody CartItems item) {
+	public ResponseEntity<CartItems> addItem(@Valid @RequestBody CartItems item) throws ResourceNotFoundException {
+		// first check if item out of stock or quantity not enough
+		int order = item.getCount();
+		int store = itemService.getItemById(item.getCartItem().getId()).get().getQuantity();
+		if (order > store) {
+			throw new ResourceNotFoundException(
+					"Item out of stock or quantity not enough :: " + item.getCartItem().getItemName());
+		} // End of item quantity check
+
 		CartItems addedItem = cartItemService.addItem(item);
-		if(getLoggedinUser() != null) {
+		if (getLoggedinUser() != null) {
 			addedItem.getShopCart().setCartUser(getLoggedinUser());
 		}
 		return ResponseEntity.ok().body(addedItem);
@@ -89,12 +99,22 @@ public class ShopCartController {
 			@Valid @RequestBody CartItems itemDetails) throws ResourceNotFoundException {
 		CartItems item = cartItemService.getItemById(cartId, itemId)
 				.orElseThrow(() -> new ResourceNotFoundException("Item not found in cart for this id :: " + itemId));
+
+		// first check if item out of stock or quantity not enough
+		int order = itemDetails.getCount();
+		int store = itemService.getItemById(itemDetails.getCartItem().getId()).get().getQuantity();
+		if (order > store) {
+			throw new ResourceNotFoundException(
+					"Item out of stock or quantity not enough :: " + item.getCartItem().getItemName());
+		}
+
 		final CartItems updatedItem = cartItemService.updateItem(item, itemDetails);
 		return ResponseEntity.ok(updatedItem);
 	}
 
 	@DeleteMapping("/items/{cId}/{id}")
-	public Map<String, Boolean> deleteItem(@PathVariable("cId") long cartId, @PathVariable("id") long itemId) throws ResourceNotFoundException {
+	public Map<String, Boolean> deleteItem(@PathVariable("cId") long cartId, @PathVariable("id") long itemId)
+			throws ResourceNotFoundException {
 		CartItems item = cartItemService.getItemById(cartId, itemId)
 				.orElseThrow(() -> new ResourceNotFoundException("Item not found in cart  for this id :: " + itemId));
 
@@ -103,18 +123,17 @@ public class ShopCartController {
 		response.put("deleted", Boolean.TRUE);
 		return response;
 	}
-	
-	//get logged user by username to update cart with logged user
-	private User getLoggedinUser(){
-		Object principal = SecurityContextHolder.getContext()
-				.getAuthentication().getPrincipal();
-		
+
+	// get logged user by username to update cart with logged user
+	private User getLoggedinUser() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
 		if (principal instanceof UserDetails) {
-			if(((UserDetails) principal).getUsername() != null) {
+			if (((UserDetails) principal).getUsername() != null) {
 				return userService.getByUsername(((UserDetails) principal).getUsername()).get();
 			}
 		}
-		
+
 		return null;
 	}
 

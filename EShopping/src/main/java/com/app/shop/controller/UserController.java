@@ -78,13 +78,11 @@ public class UserController {
 	@PutMapping("/users/{id}")
 	public ResponseEntity<User> updateUser(@PathVariable("id") long id, @Valid @RequestBody User userDetails)
 			throws ResourceNotFoundException {
-		System.out.println(" User Updated photoooo :  " + userDetails.getPhoto());
 		User user = userService.getUserById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("User not found for this id :: " + id));
 		String cryptPassword = passwordEncoder.encode(userDetails.getPassword());
 		userDetails.setPassword(cryptPassword);
 		final User updatedUser = userService.updateUser(user, userDetails);
-		System.out.println(" User Updated:  " + updatedUser);
 		return ResponseEntity.ok(updatedUser);
 	}
 

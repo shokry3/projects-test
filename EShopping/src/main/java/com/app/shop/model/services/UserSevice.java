@@ -18,7 +18,6 @@ public class UserSevice implements IUserService {
 
 	@Override
 	public Optional<User> getUserById(long id) {
-		System.out.println("begin get th e user");
 		try {
 			return userRepo.findById(id);
 		}catch(Exception ex) {

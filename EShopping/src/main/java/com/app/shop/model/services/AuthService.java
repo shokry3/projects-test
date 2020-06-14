@@ -52,13 +52,10 @@ public class AuthService implements IAuthService {
 			Authentication authenticate = authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 			SecurityContextHolder.getContext().setAuthentication(authenticate);
-			System.out.println("is authenticate = " + authenticate.isAuthenticated());
 			String authenticationToken = jwtProvider.generateToken(authenticate);
 			User loggedUser = userservice.getByUsername(loginRequest.getUsername()).get();
 			AuthenticationResponse authResponse = new AuthenticationResponse(authenticationToken, loggedUser.getId(),
 					loggedUser.getUsername(), loggedUser.getEmail(), loggedUser.getRoles());
-			System.out.println(
-					"authResponse data  = " + authResponse.getUsername() + " -- // " + authResponse.getAccessToken());
 			return authResponse;
 		} catch (Exception ex) {
 			ex.printStackTrace();
