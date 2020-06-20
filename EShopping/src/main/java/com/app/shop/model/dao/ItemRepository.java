@@ -16,8 +16,8 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 	Optional<Item> findByItemName(String name);
 	
 	//Return items by optional filter parameter (store_id, dealer_id, type) or get all items in case null parameter value
-	@Query(value = "SELECT t FROM Item t WHERE (:sid is null or t.itemStore.id = :sid) and "
-			+ "(:did is null or t.itemDealer.id = :did) and "
+	@Query(value = "SELECT t FROM Item t WHERE (:sid is null or t.itemStore = :sid) and "
+			+ "(:did is null or t.itemDealer = :did) and "
 			+ "(:tid is null or t.type = :tid) ORDER BY RATE DESC")
 	List<Item> findByItemStore(@Param("sid") Long storeId, @Param("did") Long dealerId, @Param("tid") SType type);
 	

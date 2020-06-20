@@ -26,5 +26,10 @@ public class ItemInfo {
 	public void setDealerId(Long dealerId) {
 		this.dealerId = dealerId;
 	}
+	
+	@Override
+	public String toString() {
+		return "ItemInfo [type=" + type + ", storeId=" + storeId + ", dealerId=" + dealerId + "]";
+	}
 
 }

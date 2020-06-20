@@ -17,7 +17,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.ForeignKey;
 
@@ -46,30 +48,36 @@ public class Item {
 	@Column(length = 30)
 	private ItemStatus status;
 
-	@NotBlank
+	@NotNull
+	@Min(value = 1, message = "quantity must be greater than zero")
 	@Column(nullable = false)
 	private int quantity;
 	
-	@NotBlank
+	@NotNull
+	@Min(value = 1, message = "price must be greater than zero")
 	@Column(nullable = false)
 	private double price;
 
 
 	private Date addedDate;
+	
+	private Date modifyDate;
 
-	@NotBlank
-	@ManyToOne
-	@JsonIgnore
-	@JoinColumn(name = "dealer_id", referencedColumnName="ID", nullable = false)
-	@ForeignKey(name = "Fk_dealeritems_user")
-	private User itemDealer;
+	@NotNull
+	@Column(name = "dealer_id",nullable = false)
+//	@ManyToOne
+//	@JsonIgnore
+//	@JoinColumn(name = "dealer_id", referencedColumnName="ID", nullable = false)
+//	@ForeignKey(name = "Fk_dealeritems_user")
+	private long itemDealer;
 
-	@NotBlank
-	@ManyToOne
-	@JsonIgnore
-	@JoinColumn(name = "store_id", referencedColumnName="ID", nullable = false)
+	@NotNull
+	@Column(name = "store_id",nullable = false)
+//	@ManyToOne
+//	@JsonIgnore
+//	@JoinColumn(name = "store_id", referencedColumnName="ID", nullable = false)
 	@ForeignKey(name = "Fk_storeitems_user")
-	private Store itemStore;
+	private long itemStore;
 
 	@Enumerated(EnumType.STRING)
 	@Column(length = 30)
@@ -152,19 +160,27 @@ public class Item {
 		this.addedDate = addedDate;
 	}
 
-	public User getItemDealer() {
+	public Date getModifyDate() {
+		return modifyDate;
+	}
+
+	public void setModifyDate(Date modifyDate) {
+		this.modifyDate = modifyDate;
+	}
+
+	public long getItemDealer() {
 		return itemDealer;
 	}
 
-	public void setItemDealer(User itemDealer) {
+	public void setItemDealer(long itemDealer) {
 		this.itemDealer = itemDealer;
 	}
 
-	public Store getItemStore() {
+	public long getItemStore() {
 		return itemStore;
 	}
 
-	public void setItemStore(Store itemStore) {
+	public void setItemStore(long itemStore) {
 		this.itemStore = itemStore;
 	}
 

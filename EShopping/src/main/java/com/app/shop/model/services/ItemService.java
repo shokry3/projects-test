@@ -21,7 +21,6 @@ public class ItemService implements IItemService {
 
 	@Override
 	public Optional<Item> getItemById(long id) {
-		System.out.println("begin get th e Item");
 		try {
 			return itemRepo.findById(id);
 		}catch(Exception ex) {
@@ -48,13 +47,13 @@ public class ItemService implements IItemService {
 
 	@Override
 	public Item updateItem(Item item, Item updatedItem) {
-		item.setItemName(item.getItemName());
-		item.setDescription(item.getDescription());
-		item.setQuantity(item.getQuantity());
-		item.setPrice(item.getPrice());
-		item.setRate(item.getRate());
-		item.setStatus(item.getStatus());
-		item.setType(item.getType());
+		item.setItemName(updatedItem.getItemName());
+		item.setDescription(updatedItem.getDescription());
+		item.setQuantity(updatedItem.getQuantity());
+		item.setPrice(updatedItem.getPrice());
+		item.setRate(updatedItem.getRate());
+		item.setStatus(updatedItem.getStatus());
+		item.setType(updatedItem.getType());
 		return this.saveItem(item);
 	}
 

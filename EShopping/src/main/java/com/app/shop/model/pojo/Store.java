@@ -58,9 +58,9 @@ public class Store {
 	@Column(nullable = false)
 	private String email;
 
-	// in case user is dealer thin he have item in the store
-	@OneToMany(mappedBy = "itemStore", cascade = CascadeType.ALL)
-	Set<Item> item = new HashSet();
+	//store items property 
+//	@OneToMany(mappedBy = "itemStore", cascade = CascadeType.ALL)
+//	Set<Item> item = new HashSet();
 
 	// in case user is dealer thin he have item in the store
 	@OneToMany(mappedBy = "storeConfig", cascade = CascadeType.ALL)
@@ -138,13 +138,13 @@ public class Store {
 		this.email = email;
 	}
 
-	public Set<Item> getItems() {
-		return item;
-	}
-
-	public void setItems(Set<Item> item) {
-		this.item = item;
-	}
+//	public Set<Item> getItems() {
+//		return item;
+//	}
+//
+//	public void setItems(Set<Item> item) {
+//		this.item = item;
+//	}
 
 	public Set<StoreConfig> getConfigs() {
 		return configs;

@@ -16,12 +16,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.shop.exceptionhandel.ResourceNotFoundException;
 import com.app.shop.model.enums.SType;
 import com.app.shop.model.pojo.Item;
 import com.app.shop.model.pojo.ItemInfo;
+import com.app.shop.model.pojo.User;
 import com.app.shop.model.services.srinterface.IItemService;
 
 @RestController
@@ -39,7 +41,7 @@ public class ItemController {
 
 	// End point methods to get store items by item info (store_id, dealer_id, type)
 	// or get all items in case null parameter value.
-	@GetMapping("/items")
+	@PostMapping(path = "/allItems", consumes = {"application/json"})
 	public ResponseEntity<List<Item>> getAllItems(@RequestBody(required = false) ItemInfo itemInfo) {
 		if (itemInfo == null) {
 			itemInfo = new ItemInfo();
@@ -60,16 +62,30 @@ public class ItemController {
 		}
 		return ResponseEntity.ok().body(item);
 	}
+	
+	//to validate user email register.....
+		@GetMapping("/itemname")
+		public ResponseEntity<String> getUserEmail(@RequestParam String id) throws ResourceNotFoundException {
+			Item item = new Item();
+			try {
+				item = itemService.getByItemname(id)
+						.orElseThrow(() -> new ResourceNotFoundException("Item not found for this Name :: " + id));
+			} catch (NumberFormatException e) {
+			}
+			return ResponseEntity.ok().body(item.getItemName());
+		}
 
-	@PostMapping(path = "/items", consumes = { "application/json" })
+	@PostMapping(path = "/items")
 	public ResponseEntity<Item> addItem(@Valid @RequestBody Item item) {
 		Item addedItem = itemService.addItem(item);
+//		System.out.println("here addeddddd items .... " + addedItem);
 		return ResponseEntity.ok().body(addedItem);
 	}
 
 	@PutMapping("/items/{id}")
 	public ResponseEntity<Item> updateItem(@PathVariable("id") long id, @Valid @RequestBody Item itemDetails)
 			throws ResourceNotFoundException {
+		//System.out.println("here update items .... " + itemDetails);
 		Item item = itemService.getItemById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Item not found for this id :: " + id));
 		final Item updatedItem = itemService.updateItem(item, itemDetails);

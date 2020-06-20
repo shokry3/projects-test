@@ -57,7 +57,7 @@ public class AuthController {
 	}
 	
 	//to validate user email register.....
-	@GetMapping("/useremail")
+	@GetMapping("/itemname")
 	public ResponseEntity<String> getUserEmail(@RequestParam String id) throws ResourceNotFoundException {
 		User user = new User();
 		try {

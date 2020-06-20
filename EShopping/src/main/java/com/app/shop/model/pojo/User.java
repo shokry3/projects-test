@@ -75,8 +75,8 @@ public class User {
 
 	// in case user is dealer thin he have item of the dealer
 	//@JsonIgnore
-	@OneToMany(mappedBy = "itemDealer", cascade = CascadeType.ALL)
-	Set<Item> item = new HashSet();
+//	@OneToMany(mappedBy = "itemDealer", cascade = CascadeType.ALL)
+//	Set<Item> item = new HashSet();
 
 	// in case user is dealer thin he have cart item of the carts
 	@JsonIgnore
@@ -183,13 +183,13 @@ public class User {
 		this.interests = interests;
 	}
 
-	public Set<Item> getItems() {
-		return item;
-	}
-
-	public void setItems(Set<Item> item) {
-		this.item = item;
-	}
+//	public Set<Item> getItems() {
+//		return item;
+//	}
+//
+//	public void setItems(Set<Item> item) {
+//		this.item = item;
+//	}
 
 	public byte[] getPhoto() {
 		return photo;
