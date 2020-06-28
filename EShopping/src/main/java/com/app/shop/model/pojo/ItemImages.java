@@ -8,9 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.ForeignKey;
 
@@ -24,20 +26,22 @@ public class ItemImages {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "imageid_Sequence")
 	private long id;
 	
-	@NotBlank
-	@Column(nullable = false)
+	//@NotBlank
+	@Column(nullable = true)
 	private String description;
 	
-	@NotBlank
+	@NotNull
+	@Lob
 	@Column(nullable = false)
-	private Blob image;	
+	private byte[] image;	
 	
-	@NotBlank
-	@ManyToOne
-	@JsonIgnore
-	@JoinColumn(name = "item_id", referencedColumnName="ID", nullable = false)
-	@ForeignKey(name = "Fk_itemimages_item")
-	private Item imageItem;
+	@NotNull
+	@Column(name = "item_id",nullable = false)
+//	@ManyToOne
+//	@JsonIgnore
+//	@JoinColumn(name = "item_id", referencedColumnName="ID", nullable = false)
+//	@ForeignKey(name = "Fk_itemimages_item")
+	private long imageItem;
 
 	public long getId() {
 		return id;
@@ -55,19 +59,19 @@ public class ItemImages {
 		this.description = description;
 	}
 
-	public Blob getImage() {
+	public byte[] getImage() {
 		return image;
 	}
 
-	public void setImage(Blob image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
 
-	public Item getImageItem() {
+	public long getImageItem() {
 		return imageItem;
 	}
 
-	public void setImageItem(Item imageItem) {
+	public void setImageItem(long imageItem) {
 		this.imageItem = imageItem;
 	}
 

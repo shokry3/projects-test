@@ -87,9 +87,9 @@ public class Item {
 	private ItemRate rate;
 
 	// in case user is dealer thin he have item in the store
-	@JsonIgnore
-	@OneToMany(mappedBy = "imageItem", cascade = CascadeType.ALL)
-	Set<ItemImages> images = new HashSet();
+//	@JsonIgnore
+//	@OneToMany(mappedBy = "imageItem", cascade = CascadeType.ALL)
+//	Set<ItemImages> images = new HashSet();
 	
 	// in case user is dealer thin he have item in the carts
 	@JsonIgnore
@@ -144,13 +144,13 @@ public class Item {
 		this.price = price;
 	}
 
-	public Set<ItemImages> getImages() {
-		return images;
-	}
-
-	public void setImages(Set<ItemImages> images) {
-		this.images = images;
-	}
+//	public Set<ItemImages> getImages() {
+//		return images;
+//	}
+//
+//	public void setImages(Set<ItemImages> images) {
+//		this.images = images;
+//	}
 
 	public Date getAddedDate() {
 		return addedDate;
